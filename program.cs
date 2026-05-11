@@ -1,6 +1,6 @@
 using CityDriveManager.Services;
 using CityDriveManager.UI;
 
-var services = new CityServices();
+var service = new CityServices();
 var menu = new Menu(service);
-menu.Run;
+menu.Run();

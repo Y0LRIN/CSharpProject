@@ -5,9 +5,9 @@ namespace CityDriveManager.UI;
 
 public class Menu
 {
-    private readonly CityService _service;
+    private readonly CityServices _service;
 
-    public Menu(CityService service)
+    public Menu(CityServices service)
     {
         _service = service;
     }
@@ -21,14 +21,30 @@ public class Menu
 
             switch (choice)
             {
-                case "1": AddPointOfInterest(); break;
-                case "2": AddVehicle(); break;
-                case "3": DisplayVehicles(); break;
-                case "4": DisplayPoints(); break;
-                case "5": CalculateDistance(); break;
-                case "6": SimulateDriving(); break;
-                case "7": CreateTrip(); break;
-                case "8": DisplayTrips(); break;
+                case "1":
+                    AddPointOfInterest();
+                    break;
+                case "2":
+                    AddVehicle();
+                    break;
+                case "3":
+                    DisplayVehicles();
+                    break;
+                case "4":
+                    DisplayPoints();
+                    break;
+                case "5":
+                    CalculateDistance();
+                    break;
+                case "6":
+                    SimulateDriving();
+                    break;
+                case "7":
+                    CreateTrip();
+                    break;
+                case "8":
+                    DisplayTrips();
+                    break;
                 case "9":
                     Console.WriteLine("\nFermeture du programme...");
                     Console.WriteLine("Merci d'avoir utilisé City Drive Manager 🚗");
@@ -110,7 +126,7 @@ public class Menu
                 vehicle = new Car(brand, color, model);
                 break;
             case 2:
-                double tonnage = ReadDouble("Tonnage (T) : ");
+                int tonnage = ReadInt("Tonnage (T) : ", 0, 1000);
                 vehicle = new Truck(brand, color, tonnage);
                 break;
             default:
@@ -305,10 +321,15 @@ public class Menu
         while (true)
         {
             Console.Write(prompt);
-            if (double.TryParse(Console.ReadLine()?.Replace(',', '.'),
+            if (
+                double.TryParse(
+                    Console.ReadLine()?.Replace(',', '.'),
                     System.Globalization.NumberStyles.Any,
                     System.Globalization.CultureInfo.InvariantCulture,
-                    out double value) && value >= 0)
+                    out double value
+                )
+                && value >= 0
+            )
                 return value;
             Console.WriteLine("⚠ Veuillez entrer un nombre positif.");
         }
@@ -320,10 +341,15 @@ public class Menu
         {
             Console.Write(prompt);
             string? input = Console.ReadLine()?.Trim();
-            if (DateTime.TryParseExact(input, "yyyy-MM-dd HH:mm",
+            if (
+                DateTime.TryParseExact(
+                    input,
+                    "yyyy-MM-dd HH:mm",
                     System.Globalization.CultureInfo.InvariantCulture,
                     System.Globalization.DateTimeStyles.None,
-                    out DateTime dt))
+                    out DateTime dt
+                )
+            )
                 return dt;
             Console.WriteLine("⚠ Format invalide. Utilisez : yyyy-MM-dd HH:mm");
         }

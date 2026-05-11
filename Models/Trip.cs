@@ -4,7 +4,7 @@ public class Trip
 {
     public const double AVERAGE_SPEED = 50.0;
 
-    public Vehicle Vahicle { get; set; }
+    public Vehicle Vehicle { get; set; }
     public PointOfInterest Departure { get; set; }
     public PointOfInterest Arrival { get; set; }
     public DateTime DepartureDate { get; set; }
@@ -16,10 +16,10 @@ public class Trip
         DateTime departureDate
     )
     {
-        Vahicle = vehicle;
+        Vehicle = vehicle;
         Departure = departure;
         Arrival = arrival;
-        DepartureDate = departure;
+        DepartureDate = departureDate;
     }
 
     public double GetDistance()
@@ -34,7 +34,7 @@ public class Trip
 
     public TimeSpan GetTimeSinceDeparture()
     {
-        return DateTime.now - DepartureDate;
+        return DateTime.Now - DepartureDate;
     }
 
     public override string ToString()
@@ -42,7 +42,7 @@ public class Trip
         double distance = GetDistance();
         int durationMin = (int)Math.Round(GetDurationInMinutes());
 
-        return $"Véhicule : {Vehicule.Brand}\n"
+        return $"Véhicule : {Vehicle.Brand}\n"
             + $"De : {Departure.Name}\n"
             + $"A : {Arrival.Name}\n"
             + $"Distance : {distance} km\n"

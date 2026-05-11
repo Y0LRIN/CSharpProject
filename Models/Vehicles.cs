@@ -48,7 +48,7 @@ public class HybridCar : Vehicle, IThermalCar, IElectricCar
 
     public void Recharge(double amount)
     {
-        BatteryLevel = Math.min(100, BatteryLevel + amount);
+        BatteryLevel = Math.Min(100, BatteryLevel + amount);
         Console.WriteLine($"Recharge effectuée. Batterie : {BatteryLevel}%");
     }
 

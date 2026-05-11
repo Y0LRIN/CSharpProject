@@ -9,7 +9,7 @@ public class CityServices
     public List<Trip> Trips { get; } = new();
 
     private readonly Dictionary<string, int> _vehicleIndex = new();
-    private readonly Hashset<string> _pointNames = new();
+    private readonly HashSet<string> _pointNames = new();
 
     public bool AddVehicle(Vehicle vehicle)
     {
