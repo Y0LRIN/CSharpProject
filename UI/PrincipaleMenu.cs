@@ -1,5 +1,4 @@
 using (AddTrip addTrip = new AddTrip()) { }
-
 using (AddPointOfInterest addPointOfInterest = new AddPointOfInterest()) { }
 using (AddCars addCars = new AddCars()) { }
 using (CalculateDistance calculateDistance = new CalculateDistance()) { }
@@ -7,6 +6,8 @@ using (DisplayPoints displayPoints = new DisplayPoints()) { }
 using (DisplayTrips displayTrips = new DisplayTrips()) { }
 using (DisplayVehicles displayVehicles = new DisplayVehicles()) { }
 using (SimulateDriving simulateDriving = new SimulateDriving()) { }
+
+namespace CityDriveManager.UI;
 
 public class PrincipaleMenu
 {
