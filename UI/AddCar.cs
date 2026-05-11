@@ -1,6 +1,6 @@
 public class AddCarsMenu : Menu
 {
-private void AddVehicle()
+    private void AddVehicle()
     {
         Console.WriteLine("=== Ajouter un véhicule ===");
         Console.WriteLine("  1. Voiture (Car)");
@@ -25,7 +25,7 @@ private void AddVehicle()
             case 3:
                 string hybridModel = ReadString("  Modèle : ");
                 double battery = ReadDouble("  Niveau batterie initial (%) : ");
-                double fuel    = ReadDouble("  Niveau carburant initial (L) : ");
+                double fuel = ReadDouble("  Niveau carburant initial (L) : ");
                 vehicle = new HybridCar(brand, color, hybridModel, battery, fuel);
                 break;
             default:
@@ -33,7 +33,7 @@ private void AddVehicle()
                 return;
         }
 
-        
         Console.WriteLine($"  ✓ Véhicule ajouté : {vehicle}");
     }
 }
+

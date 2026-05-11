@@ -4,7 +4,11 @@ public class CalculateDistanceMenu : Menu
     {
         Console.WriteLine("=== Calcul des Distances ===");
         var trips = _data.GetTrips();
-        if (trips.Count == 0) { Console.WriteLine("  ⚠ Aucun trajet pour calculer."); return; }
+        if (trips.Count == 0)
+        {
+            Console.WriteLine("  ⚠ Aucun trajet pour calculer.");
+            return;
+        }
 
         foreach (var trip in trips)
         {
@@ -13,3 +17,4 @@ public class CalculateDistanceMenu : Menu
         }
     }
 }
+

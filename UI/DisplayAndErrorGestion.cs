@@ -4,7 +4,11 @@ public class DisplayAndErrorGestionMenu : Menu
     {
         Console.WriteLine("=== Gestion des Erreurs ===");
         var errors = _data.GetErrors();
-        if (errors.Count == 0) { Console.WriteLine("  ⚠ Aucune erreur enregistrée."); return; }
+        if (errors.Count == 0)
+        {
+            Console.WriteLine("  ⚠ Aucune erreur enregistrée.");
+            return;
+        }
 
         foreach (var error in errors)
             Console.WriteLine($"  - {error}");
@@ -14,7 +18,11 @@ public class DisplayAndErrorGestionMenu : Menu
     {
         Console.WriteLine("=== Effacer les Erreurs ===");
         var errors = _data.GetErrors();
-        if (errors.Count == 0) { Console.WriteLine("  ⚠ Aucune erreur à effacer."); return; }
+        if (errors.Count == 0)
+        {
+            Console.WriteLine("  ⚠ Aucune erreur à effacer.");
+            return;
+        }
 
         Console.Write("  Êtes-vous sûr de vouloir effacer toutes les erreurs ? (o/n) : ");
         string? input = Console.ReadLine()?.Trim().ToLower();
@@ -35,7 +43,8 @@ public class DisplayAndErrorGestionMenu : Menu
         {
             Console.Write(prompt);
             string? val = Console.ReadLine()?.Trim().ToUpper();
-            if (!string.IsNullOrWhiteSpace(val)) return val;
+            if (!string.IsNullOrWhiteSpace(val))
+                return val;
             Console.WriteLine("  ⚠ Saisie invalide, veuillez réessayer.");
         }
     }
@@ -45,10 +54,14 @@ public class DisplayAndErrorGestionMenu : Menu
         while (true)
         {
             Console.Write(prompt);
-            if (double.TryParse(Console.ReadLine()?.Replace(',', '.'),
+            if (
+                double.TryParse(
+                    Console.ReadLine()?.Replace(',', '.'),
                     System.Globalization.NumberStyles.Any,
                     System.Globalization.CultureInfo.InvariantCulture,
-                    out double val))
+                    out double val
+                )
+            )
                 return val;
             Console.WriteLine("  ⚠ Nombre invalide, veuillez réessayer.");
         }
@@ -59,7 +72,8 @@ public class DisplayAndErrorGestionMenu : Menu
         while (true)
         {
             Console.Write(prompt);
-            if (int.TryParse(Console.ReadLine(), out int val)) return val;
+            if (int.TryParse(Console.ReadLine(), out int val))
+                return val;
             Console.WriteLine("  ⚠ Entier invalide, veuillez réessayer.");
         }
     }
@@ -69,7 +83,8 @@ public class DisplayAndErrorGestionMenu : Menu
         while (true)
         {
             int idx = ReadInt(prompt) - 1;
-            if (idx >= 0 && idx < max) return idx;
+            if (idx >= 0 && idx < max)
+                return idx;
             Console.WriteLine($"  ⚠ Index invalide (1–{max}).");
         }
     }

@@ -1,13 +1,21 @@
 public class AddTripMenu : Menu
 {
- private void CreateTrip()
+    private void CreateTrip()
     {
         Console.WriteLine("=== Créer un trajet ===");
         var vehicles = _data.GetVehicles();
-        var points   = _data.GetPoints();
+        var points = _data.GetPoints();
 
-        if (vehicles.Count == 0) { Console.WriteLine("  ⚠ Aucun véhicule."); return; }
-        if (points.Count < 2)   { Console.WriteLine("  ⚠ Ajoutez au moins 2 lieux."); return; }
+        if (vehicles.Count == 0)
+        {
+            Console.WriteLine("  ⚠ Aucun véhicule.");
+            return;
+        }
+        if (points.Count < 2)
+        {
+            Console.WriteLine("  ⚠ Ajoutez au moins 2 lieux.");
+            return;
+        }
 
         Console.WriteLine("  --- Véhicules ---");
         for (int i = 0; i < vehicles.Count; i++)
@@ -23,17 +31,24 @@ public class AddTripMenu : Menu
         Console.Write("  Date de départ (dd/MM/yyyy HH:mm, vide = maintenant) : ");
         string? dateInput = Console.ReadLine()?.Trim();
         DateTime departureDate;
-        if (string.IsNullOrWhiteSpace(dateInput) ||
-            !DateTime.TryParseExact(dateInput, "dd/MM/yyyy HH:mm",
+        if (
+            string.IsNullOrWhiteSpace(dateInput)
+            || !DateTime.TryParseExact(
+                dateInput,
+                "dd/MM/yyyy HH:mm",
                 System.Globalization.CultureInfo.InvariantCulture,
-                System.Globalization.DateTimeStyles.None, out departureDate))
+                System.Globalization.DateTimeStyles.None,
+                out departureDate
+            )
+        )
         {
             departureDate = DateTime.Now;
             Console.WriteLine("  → Date de départ définie à maintenant.");
         }
 
         Trip trip = new Trip(vehicles[vIdx], points[dIdx], points[aIdx], departureDate);
-        
+
         Console.WriteLine($"\n  ✓ Trajet créé :\n{trip}");
     }
 }
+
