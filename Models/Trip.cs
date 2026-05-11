@@ -1,6 +1,6 @@
-namespace CityDriveManager.Models
+namespace CityDriveManager.Models;
 
-public class Trip 
+public class Trip
 {
     public const double AVERAGE_SPEED = 50.0;
 
@@ -9,40 +9,44 @@ public class Trip
     public PointOfInterest Arrival { get; set; }
     public DateTime DepartureDate { get; set; }
 
-    public Trip(Vehicle vehicle, PointOfInterest departure, PointOfInterest arrival, DateTime departureDate)
+    public Trip(
+        Vehicle vehicle,
+        PointOfInterest departure,
+        PointOfInterest arrival,
+        DateTime departureDate
+    )
     {
-      Vahicle = vehicle;
-      Departure = departure;
-      Arrival = arrival;
-      DepartureDate = departure;
+        Vahicle = vehicle;
+        Departure = departure;
+        Arrival = arrival;
+        DepartureDate = departure;
     }
 
     public double GetDistance()
     {
-      return Departure.CalculateDistance(Arrival);
+        return Departure.CalculateDistance(Arrival);
     }
 
     public double GetDurationInMinutes()
     {
-      return (GetDistance() / AVERAGE_SPEED) * 60.0;
+        return (GetDistance() / AVERAGE_SPEED) * 60.0;
     }
 
     public TimeSpan GetTimeSinceDeparture()
     {
-      return DateTime.now - DepartureDate;
+        return DateTime.now - DepartureDate;
     }
 
     public override string ToString()
-        {
-            double distance = GetDistance();
-            int durationMin = (int)Math.Round(GetDurationInMinutes());
+    {
+        double distance = GetDistance();
+        int durationMin = (int)Math.Round(GetDurationInMinutes());
 
-            return $"Véhicule : {Vehicule.Brand}\n" +
-                   $"De : {Departure.Name}\n" +
-                   $"A : {Arrival.Name}\n" +
-                   $"Distance : {distance} km\n" +
-                   $"Durée estimée : {durationMin} minutes\n" +
-                   $"Départ : {DepartureDate:dd/MM/yyyy HH:mm}";
-        }
-}
+        return $"Véhicule : {Vehicule.Brand}\n"
+            + $"De : {Departure.Name}\n"
+            + $"A : {Arrival.Name}\n"
+            + $"Distance : {distance} km\n"
+            + $"Durée estimée : {durationMin} minutes\n"
+            + $"Départ : {DepartureDate:dd/MM/yyyy HH:mm}";
+    }
 }
