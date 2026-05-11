@@ -17,3 +17,19 @@ public class Car : Vehicle
         return $"[CAR]\n{base.ToString()}\nModèle : {Model}";
     }
 }
+
+public class Truck : Vehicle
+{
+    public int Tonnage { get; set; }
+
+    public Truck(string brand, string color, int tonnage)
+        : base(brand, color)
+    {
+        Tonnage = tonnage;
+    }
+
+    public override string ToString()
+    {
+        return $"[TRUCK]\n{base.ToString()}\nTonnage : {Tonnage} T";
+    }
+}
